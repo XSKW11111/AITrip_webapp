@@ -1,3 +1,5 @@
+"use "
+
 import React from "react";
 
 const TripPage = (): React.ReactElement => {
