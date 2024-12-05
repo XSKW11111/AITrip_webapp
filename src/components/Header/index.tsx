@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled";
-import { HStack, Box, Icon} from "@chakra-ui/react";
+import { HStack, Box } from "@chakra-ui/react";
 import { FaPlaneDeparture } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 
