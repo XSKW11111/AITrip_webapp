@@ -5,6 +5,8 @@ import { Providers } from "./providers";
 import { fonts } from "./font";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import Error from "./error";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,6 +43,7 @@ export default function RootLayout({
         </ErrorBoundary>
 
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   );
