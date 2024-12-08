@@ -3,7 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
 import { fonts } from "./font";
-
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
+import Error from "./error";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,7 +35,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
+        <ErrorBoundary errorComponent={Error}>
+
         {children}
+        </ErrorBoundary>
+
         </Providers>
       </body>
     </html>
