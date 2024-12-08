@@ -51,7 +51,7 @@ const TripPage = (): React.ReactElement => {
 
     const debounceGetOpenAI = debounce(getOpenAIResult, 500);
 
-    const handleInputChange = async (e: any) => {
+    const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const newInputContent = e.target.value;
         setInputContent(newInputContent);
         

@@ -1,11 +1,11 @@
 import React from "react"
-import { Container, Box, Center, Circle, VStack } from "@chakra-ui/react"
+import { Container, Center, Circle, VStack } from "@chakra-ui/react"
 import { Trip } from "@/type/trip_base"
 type TripCardProps = {
     trip?: Trip;
     index?: number;
 }
-const TripCard = ({trip, index}: TripCardProps): React.ReactElement => {
+const TripCard = ({trip, index = 0}: TripCardProps): React.ReactElement => {
 
     return (
         <VStack gap='30px'>

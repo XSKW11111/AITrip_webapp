@@ -1,4 +1,3 @@
-import { Trip } from "@/type/trip_base";
 const OPENAI_SECRET = '';
 export const getTripPlanFromAI = async (prompt: string) => {
 
