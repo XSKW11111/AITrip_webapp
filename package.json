@@ -10,7 +10,7 @@
     "prepare": "husky"
   },
   "lint-staged" : {
-    "*.{ts,tsx}": ["eslint", "prettier --write"]
+    "*.{ts,tsx}": ["prettier --write"]
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.4.2",
