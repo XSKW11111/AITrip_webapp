@@ -1,5 +1,6 @@
 'use client' // Error boundaries must be Client Components
  
+import { Center, VStack } from '@chakra-ui/react'
 import { useEffect } from 'react'
  
 export default function Error({
@@ -15,7 +16,8 @@ export default function Error({
   }, [error])
  
   return (
-    <div>
+    <Center>
+    <VStack>
       <h2>Something went wrong!</h2>
       <button
         onClick={
@@ -25,6 +27,7 @@ export default function Error({
       >
         Try again
       </button>
-    </div>
+    </VStack>
+    </Center>
   )
 }
