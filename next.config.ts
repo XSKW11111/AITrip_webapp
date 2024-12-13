@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
         config,
         { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
       ) => {
+        
         return config
       },
 };
