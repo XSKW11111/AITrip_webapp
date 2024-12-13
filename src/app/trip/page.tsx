@@ -5,12 +5,11 @@ import React, { useState } from "react";
 import { getTripPlanFromAI } from "@/service/api";
 import TripCard from "@/features/tripPlan/TripCard";
 import { Trip } from "@/type/trip_base";
-import { mockData } from "@/mock/mockTripListData";
 import { IoSend } from "react-icons/io5";
 
 const TripPage = (): React.ReactElement => {
     const [inputContent, setInputContent] = useState('');
-    const [travelData, setTravelData] = useState<Trip[]>(mockData.data);
+    const [travelData, setTravelData] = useState<Trip[]>([]);
 
     const getOpenAIResult = async () => {
         let res = [];
