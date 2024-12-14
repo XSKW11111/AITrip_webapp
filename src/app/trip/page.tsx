@@ -42,15 +42,15 @@ const TripPage = (): React.ReactElement => {
       <VStack
         w="100%"
         borderRadius="8px"
-        padding="20px"
+        paddingY="20px"
+        paddingX="100px"
         borderColor="gray.200"
         align="stretch"
       >
         <Text>Description of your trip</Text>
 
-        <HStack w="100%" justifyContent="space-between">
+        <HStack w="100%">
           <Input
-            maxWidth={600}
             value={inputContent}
             onChange={handleInputChange}
             borderColor="black"
