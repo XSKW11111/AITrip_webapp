@@ -1,6 +1,14 @@
 "use client";
 
-import { Input, VStack, HStack, Box, Button, Center } from "@chakra-ui/react";
+import {
+  Input,
+  VStack,
+  HStack,
+  Box,
+  Button,
+  Center,
+  Text,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import { getTripPlanFromAI } from "@/service/api";
 import TripCard from "@/features/tripPlan/TripCard";
@@ -30,25 +38,37 @@ const TripPage = (): React.ReactElement => {
     void getOpenAIResult();
   };
   return (
-    <VStack padding={20} gap="40px">
-      <HStack w="100%" justifyContent="center">
-        <Input
-          maxWidth={600}
-          value={inputContent}
-          onChange={handleInputChange}
-        />
-        <Button
-          w="40px"
-          h="40px"
-          backgroundColor="teal.400"
-          borderRadius={8}
-          onClick={handleSend}
-        >
-          <Center>
-            <IoSend size={30} />
-          </Center>
-        </Button>
-      </HStack>
+    <VStack padding="40px">
+      <VStack
+        w="100%"
+        borderRadius="8px"
+        padding="20px"
+        borderColor="gray.200"
+        align="stretch"
+      >
+        <Text>Description of your trip</Text>
+
+        <HStack w="100%" justifyContent="space-between">
+          <Input
+            maxWidth={600}
+            value={inputContent}
+            onChange={handleInputChange}
+            borderColor="black"
+          />
+          <Button
+            w="40px"
+            h="40px"
+            backgroundColor="teal.400"
+            borderRadius={8}
+            onClick={handleSend}
+          >
+            <Center>
+              <IoSend size={30} />
+            </Center>
+          </Button>
+        </HStack>
+      </VStack>
+
       <Box overflowX="auto" width="100%" paddingBottom="20px">
         <HStack width="fit-content" gap="60px">
           {travelData &&
