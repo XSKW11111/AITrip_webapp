@@ -6,6 +6,7 @@ import { fonts } from "./font";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import Error from "./error";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Head from "next/head";
 
 
 const geistSans = localFont({
@@ -30,9 +31,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
     
     <html lang="en" className={fonts.rubik.variable}>
+        <Head>
+            <title>AI Trip</title>
+        </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
