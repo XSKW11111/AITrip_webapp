@@ -69,8 +69,16 @@ const TripPage = (): React.ReactElement => {
         </HStack>
       </VStack>
 
-      <Box overflowX="auto" width="100%" paddingBottom="20px">
-        <HStack width="fit-content" gap="60px">
+      <Box
+        overflowX="auto"
+        width="100%"
+        paddingBottom="20px"
+        display="flex"
+        flex-direction="row"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <HStack width="fit-content" gap="60px" justifyContent="center">
           {travelData &&
             travelData.map((trip, index) => {
               return <TripCard key={index} trip={trip} index={index} />;
