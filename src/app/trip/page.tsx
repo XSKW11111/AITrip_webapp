@@ -14,15 +14,17 @@ import { getTripPlanFromAI } from "@/service/api";
 import TripCard from "@/features/tripPlan/TripCard";
 import { Trip } from "@/type/trip_base";
 import { IoSend } from "react-icons/io5";
-
+import { GetTripPlanResponse } from "@/type/trip_base";
 const TripPage = (): React.ReactElement => {
   const [inputContent, setInputContent] = useState("");
   const [travelData, setTravelData] = useState<Trip[]>([]);
 
   const getOpenAIResult = async () => {
-    let res = [];
+    let res: GetTripPlanResponse;
+
     try {
       res = await getTripPlanFromAI(inputContent);
+      console.log(res);
       setTravelData(res.travelPlan as Trip[]);
     } catch (e) {
       console.log(JSON.stringify(e));
@@ -54,6 +56,11 @@ const TripPage = (): React.ReactElement => {
             value={inputContent}
             onChange={handleInputChange}
             borderColor="black"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSend();
+              }
+            }}
           />
           <Button
             w="40px"
@@ -78,12 +85,12 @@ const TripPage = (): React.ReactElement => {
         alignItems="center"
         justifyContent="center"
       >
-        <HStack width="fit-content" gap="60px" justifyContent="center">
+        <VStack width="fit-content" gap="60px" justifyContent="center">
           {travelData &&
             travelData.map((trip, index) => {
               return <TripCard key={index} trip={trip} index={index} />;
             })}
-        </HStack>
+        </VStack>
       </Box>
     </VStack>
   );
