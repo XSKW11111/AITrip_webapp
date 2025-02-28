@@ -1,9 +1,13 @@
+import URI from "../constant/uri";
+import { GetTripPlanResponse } from "../type/trip_base";
 
+export const getTripPlanFromAI = async (
+  prompt: string,
+): Promise<GetTripPlanResponse> => {
+  const res = await fetch(URI.getTripPlan, {
+    method: "POST",
+    body: JSON.stringify({ prompt }),
+  });
 
-export const getTripPlanFromAI = async (prompt: string) => {
-    // TODO: set up api to call api with prompt
-    console.log(prompt);
-    const res = await fetch('');
-
-    return await res.json();
-}
+  return await res.json();
+};

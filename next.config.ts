@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
         
         return config
       },
+      async redirects() {
+        return [
+          // Basic redirect
+          {
+            source: '/',
+            destination: '/trip',
+            permanent: true,
+          },
+        ]
+      },
 };
 
 export default nextConfig;

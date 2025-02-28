@@ -1,20 +1,30 @@
 "use client";
 
-import { Input, VStack, HStack, Box, Button, Center } from "@chakra-ui/react";
+import {
+  Input,
+  VStack,
+  HStack,
+  Box,
+  Button,
+  Center,
+  Text,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import { getTripPlanFromAI } from "@/service/api";
 import TripCard from "@/features/tripPlan/TripCard";
 import { Trip } from "@/type/trip_base";
 import { IoSend } from "react-icons/io5";
-
+import { GetTripPlanResponse } from "@/type/trip_base";
 const TripPage = (): React.ReactElement => {
   const [inputContent, setInputContent] = useState("");
   const [travelData, setTravelData] = useState<Trip[]>([]);
 
   const getOpenAIResult = async () => {
-    let res = [];
+    let res: GetTripPlanResponse;
+
     try {
       res = await getTripPlanFromAI(inputContent);
+      console.log(res);
       setTravelData(res.travelPlan as Trip[]);
     } catch (e) {
       console.log(JSON.stringify(e));
@@ -30,32 +40,57 @@ const TripPage = (): React.ReactElement => {
     void getOpenAIResult();
   };
   return (
-    <VStack padding={20} gap="40px">
-      <HStack w="100%" justifyContent="center">
-        <Input
-          maxWidth={600}
-          value={inputContent}
-          onChange={handleInputChange}
-        />
-        <Button
-          w="40px"
-          h="40px"
-          backgroundColor="teal.400"
-          borderRadius={8}
-          onClick={handleSend}
-        >
-          <Center>
-            <IoSend size={30} />
-          </Center>
-        </Button>
-      </HStack>
-      <Box overflowX="auto" width="100%" paddingBottom="20px">
-        <HStack width="fit-content" gap="60px">
+    <VStack padding="40px">
+      <VStack
+        w="100%"
+        borderRadius="8px"
+        paddingY="20px"
+        paddingX="100px"
+        borderColor="gray.200"
+        align="stretch"
+      >
+        <Text>Description of your trip</Text>
+
+        <HStack w="100%">
+          <Input
+            value={inputContent}
+            onChange={handleInputChange}
+            borderColor="black"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSend();
+              }
+            }}
+          />
+          <Button
+            w="40px"
+            h="40px"
+            backgroundColor="teal.400"
+            borderRadius={8}
+            onClick={handleSend}
+          >
+            <Center>
+              <IoSend size={30} />
+            </Center>
+          </Button>
+        </HStack>
+      </VStack>
+
+      <Box
+        overflowX="auto"
+        width="100%"
+        paddingBottom="20px"
+        display="flex"
+        flex-direction="row"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <VStack width="fit-content" gap="60px" justifyContent="center">
           {travelData &&
             travelData.map((trip, index) => {
               return <TripCard key={index} trip={trip} index={index} />;
             })}
-        </HStack>
+        </VStack>
       </Box>
     </VStack>
   );
